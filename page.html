@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Pantip</title>
+</head>
+
+<body id="createNav">
+    <header>
+        <div class="createNav">
+            <div class="nav" id="nav">
+                <ul class="nav-left-link">
+                    <li class="nav-logo">
+                        <a href="https://pantip.com/" title="pantip.com">
+                            <img src="https://ptcdn.info/mobile/logo-mobile-pantip-white.png" alt="pantip-logo">
+                        </a>
+                    </li>
+                </ul>
+
+                <div>
+                    <ul class="sidebar">
+                        <li class="sidebar-box"><a href="index.html" #>หน้าแรก</a></li>
+                        <li class="sidebar-box"><a href="" #>My Feed</a></li>
+                        <li class="sidebar-box"><a href="" #>Explore</a></li>
+                        <li class="sidebar-box"><a href="" #>คอมมูนิตี้</a></li>
+                        <li class="sidebar-box"><a href="" #>กิจกรรม</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-middle">
+                    <input type="text" id="searchBox" class="searchBox" placeholder="ค้นหา" value autocomplete="off"
+                        maxlength="256">
+
+                </div>
+
+                <ul class="nav-right-link">
+                    <li class="link"><a href="createtopic.html">ตั้งกระทู้</a></li>
+                    <li class="link"><a href="#">คอมมูนิตี้</a></li>
+                    <li class="link"><a href="#">เข้าสู่ระบบ/สมัครสมาชิก</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="content-box" id="dynamicContent">
+
+    </div>
+
+
+
+
+    <script type="module">
+        import { data } from './script.js'
+
+
+        for (var i = 0; i < data.katoo.length; i++) {
+            var katooData = data.katoo
+            var katooId = katooData[i].id
+            var katooTopic = katooData[i].topic
+            var katooContent = katooData[i].content
+            const urlParams = new URLSearchParams(window.location.search)
+            const id = urlParams.get('id');
+            var dynamicContent = document.getElementById("dynamicContent")
+
+            if (id === katooId) {
+                dynamicContent.innerHTML =
+                    `<div class="content-head">
+            <h3>${katooTopic}</h3>
+        </div>\
+        <div class="content-body">
+            ${katooContent}
+        </div>
+        <div class="content-foot">
+            <div class="display-post-action">
+
+                <div class="display-post-vote">
+                    <div class="like-score-has-score"> 13
+                        <span><a title="กดปุ่มนี้เพื่อบอกว่าเนื้อหานี้ดี (กดอีกทีเพื่อยกเลิก)" class="gg-math-plus"
+                                href="javascript:void(0);"></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>`
+            }
+        }
+    </script>
+</body>
+
+</html>

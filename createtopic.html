@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantip</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav" id="createNav">
+            <ul class="nav-left-link">
+                <li class="nav-logo">
+                    <a href="https://pantip.com/" title="pantip.com">
+                        <img src="https://ptcdn.info/mobile/logo-mobile-pantip-white.png" alt="pantip-logo">
+                    </a>
+                </li>
+            </ul>
+
+            <div>
+                <ul class="sidebar">
+                    <li class="sidebar-box"><a href="index.html" #>หน้าแรก</a></li>
+                    <li class="sidebar-box"><a href="" #>My Feed</a></li>
+                    <li class="sidebar-box"><a href="" #>Explore</a></li>
+                    <li class="sidebar-box"><a href="" #>คอมมูนิตี้</a></li>
+                    <li class="sidebar-box"><a href="" #>กิจกรรม</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-middle">
+                <input type="text" id="searchBox" class="searchBox" placeholder="ค้นหา" value autocomplete="off"
+                    maxlength="256">
+
+            </div>
+
+            <ul class="nav-right-link">
+                <li class="link"><a href="#">ตั้งกระทู้</a></li>
+                <li class="link"><a href="#">คอมมูนิตี้</a></li>
+                <li class="link"><a href="#">เข้าสู่ระบบ/สมัครสมาชิก</a></li>
+            </ul>
+
+        </div>
+    </header>
+    <form>
+        <div class="createtopic-box">
+            <div class="createTopic-head">
+                <label>1. กรุณาใส่ชื่อกระทู้</label>
+                <input type="text" id="createTopic-Title" class="createTopic-Title" placeholder="หัวข้อกระทู้"
+                    maxlength="256" required>
+            </div>
+            <div class="createTopic-body">
+                <label>2. ใส่รายละเอียด</label>
+                <textarea type="text" id="createTopic-desc" class="createTopic-Desc" row="3" cols="40"
+                    required></textarea>
+            </div>
+
+            <input type="submit" value="Submit" id="submit">
+
+
+        </div>
+    </form>
+
+    <script src="script.js"></script>
+    <script type="module">import { data } from './script.js'
+    </script>
+    <script>
+
+        const newKatoo = () => {
+            alert("Button clicked!")
+            const newKatooTopic = document.getElementById("createTopic-Title").value
+            const newKatooDesc = document.getElementById("createTopic-desc").value
+            data.katoo.push({ "topic": newKatooTopic, "content": newKatooDesc })
+
+        }
+
+        document.getElementById("submit").addEventListener("click", newKatoo)
+    </script>
+</body>
+
+</html>

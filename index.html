@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Pantip</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav" id="createNav">
+            <ul class="nav-left-link">
+                <li class="nav-logo">
+                    <a href="https://pantip.com/" title="pantip.com">
+                        <img src="https://ptcdn.info/mobile/logo-mobile-pantip-white.png" alt="pantip-logo">
+                    </a>
+                </li>
+            </ul>
+
+            <div>
+                <ul class="sidebar">
+                    <li class="sidebar-box"><a href="index.html" #>หน้าแรก</a></li>
+                    <li class="sidebar-box"><a href="" #>My Feed</a></li>
+                    <li class="sidebar-box"><a href="" #>Explore</a></li>
+                    <li class="sidebar-box"><a href="" #>คอมมูนิตี้</a></li>
+                    <li class="sidebar-box"><a href="" #>กิจกรรม</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-middle">
+                <input type="text" id="searchBox" class="searchBox" placeholder="ค้นหา" value autocomplete="off"
+                    maxlength="256">
+            </div>
+
+            <ul class="nav-right-link">
+                <li class="link"><a href="createtopic.html">ตั้งกระทู้</a></li>
+                <li class="link"><a href="#">คอมมูนิตี้</a></li>
+                <li class="link"><a href="#">เข้าสู่ระบบ/สมัครสมาชิก</a></li>
+            </ul>
+
+        </div>
+    </header>
+    <div class="test">
+        <div class="container">
+            <div class="topicheader">
+                <div class="topic">กระทู้แนะนำ</div>
+            </div>
+            <div id="content-list" class="content-list">
+                <ul id="createKatoo">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script type="module">
+        import { data } from './script.js'
+        import { newKatoo } from './1.js'
+
+        
+        for (var i = 0; i < data.katoo.length; i++) {
+            var katooData = data.katoo
+            var katooId = katooData[i].id
+            var katooTopic = katooData[i].topic
+            var katooAuthorLink = katooData[i].authorLink
+            var katooAuthorName = katooData[i].authorName
+            var katooTimeTitle = katooData[i].timeTitle
+            var katooDuration = katooData[i].duration
+
+
+            var createKatoo = document.getElementById("createKatoo")
+            createKatoo.innerHTML +=
+                '<li class="content-list-item" >'
+                + '<div class="content-list-item_title">'
+                + '<h2>' + `<a href = "page.html?id=${katooId}" target="_blank" class="item-link">`
+                + katooTopic + '</a></h2>'
+                + '</div>'
+                + '<div class="content-list-item_info">'
+                + '<h5>' + `<a href= ${katooAuthorLink} target="_blank" class="item-link-voted"> ${katooAuthorName}</a>`
+                + `<span title = ${katooTimeTitle}> ${katooDuration}</span></h5>`
+                + '</div>'
+                + '</li>'
+
+        }
+ 
+
+
+    </script>
+</body>
+
+</html>
